@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品展示</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 保留原有样式 */
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        .product-card {
+            background-color: #f7f7f7;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: inline-block;
+            vertical-align: top;
+            width: 250px;
+        }
+        .image-container {
+            position: relative;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .edit-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .add-product-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>产品展示</h1>
+
+        <!-- 示例产品卡片 -->
+        <div class="product-card">
+            <div class="image-container">
+                <img src="product1.jpg" alt="Product 1">
+                <div class="edit-icon">✏️</div>
+            </div>
+            <h2>示例产品1</h2>
+            <input type="text" value="https://drive.google.com/file/d/FILE1" readonly>
+            <button>复制视频链接</button>
+            <button>打开视频链接</button>
+            <input type="text" value="https://example.com/tap1" readonly>
+            <button>复制TAP链接</button>
+            <button>打开TAP链接</button>
+        </div>
+        
+        <!-- 复制更多产品卡片 -->
+    </div>
+
+    <!-- 增加产品的按钮 -->
+    <button class="add-product-btn" id="addProductBtn">+</button>
+
+    <script>
+        // 获取容器
+        const container = document.querySelector('.container');
+        const addProductBtn = document.getElementById('addProductBtn');
+
+        // 点击按钮后动态添加产品卡片
+        addProductBtn.addEventListener('click', () => {
+            const newProductCard = document.createElement('div');
+            newProductCard.classList.add('product-card');
+            newProductCard.innerHTML = `
+                <div class="image-container">
+                    <img src="product_placeholder.jpg" alt="New Product">
+                    <div class="edit-icon">✏️</div>
+                </div>
+                <h2>新产品</h2>
+                <input type="text" value="https://drive.google.com/file/d/NEWFILE" readonly>
+                <button>复制视频链接</button>
+                <button>打开视频链接</button>
+                <input type="text" value="https://example.com/newtap" readonly>
+                <button>复制TAP链接</button>
+                <button>打开TAP链接</button>
+            `;
+            container.appendChild(newProductCard);
+        });
+    </script>
+</body>
+</html>
